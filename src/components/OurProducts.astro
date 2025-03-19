@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+---
+
+<article
+  id="products"
+  class="grid grid-cols-1 md:grid-cols-2 min-h-screen px-10 py-16 gap-10 items-center"
+>
+  <!-- Text Section -->
+  <section class="flex flex-col gap-6">
+    <h2 class="text-5xl font-bold text-emerald-600">Nuestros Productos</h2>
+    <h3 class="text-3xl text-gray-800">Una variedad para cada paladar</h3>
+    <p class="text-lg text-gray-600 leading-relaxed">
+      Desde los dulces y jugosos <strong>Mangos Ataulfo</strong> hasta los clásicos
+      y vibrantes
+      <strong>Mangos Tommy Atkins</strong>, en Mangoland encontrarás la opción
+      perfecta para cada ocasión. Frescos, sabrosos y llenos de nutrientes.
+    </p>
+    <ul class="list-disc pl-6 text-gray-700 text-lg">
+      <li>Mangos frescos de temporada</li>
+      <li>Combos para familias y empresas</li>
+      <li>Envíos a todo el país</li>
+    </ul>
+  </section>
+
+  <!-- Image Section -->
+  <section class="flex justify-center md:justify-end">
+    <Image
+      src="/src/assets/ourproducts.jpg"
+      class="object-cover w-full max-w-md md:max-w-lg rounded-3xl shadow-lg"
+      alt="Nuestros Productos"
+      width={4032}
+      height={2688}
+    />
+  </section>
+</article>

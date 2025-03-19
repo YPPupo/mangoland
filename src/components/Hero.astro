@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div
+  id="hero"
+  class="min-h-screen w-full bg-white grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-10 px-10 md:py-16 py-32"
+>
+  <!-- Text Content -->
+  <div>
+    <h1 class="text-5xl font-bold text-emerald-600 leading-tight">
+      Del árbol a tu mesa, mangos como nunca antes
+    </h1>
+    <p class="my-6 text-gray-600 text-lg">
+      En Mangoland, llevamos la frescura tropical directamente a tu puerta.
+      Sabor premium, calidad garantizada.
+    </p>
+
+    <div class="flex gap-4">
+      <button
+        class="bg-emerald-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-emerald-700 transition"
+        >¡Probalos ahora!</button
+      >
+      <button
+        class="bg-gray-200 text-emerald-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-300 transition"
+        >Descubrí nuestros mangos</button
+      >
+    </div>
+  </div>
+
+  <!-- Image Section -->
+  <div class="flex justify-center md:justify-end">
+    <Image
+      src="/src/assets/background.jpg"
+      alt="Mangos frescos"
+      width={500}
+      height={500}
+      class="rounded-3xl"
+    />
+  </div>
+</div>

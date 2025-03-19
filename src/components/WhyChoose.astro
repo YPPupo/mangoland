@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+---
+
+<section id="why-choose-us" class="min-h-screen grid grid-cols-1 md:grid-cols-2 px-10 py-16 gap-10 items-center">
+  <!-- Text Section -->
+  <article class="flex flex-col gap-6">
+    <h2 class="text-5xl font-bold text-emerald-600">Por Qué Elegirnos</h2>
+    <h3 class="text-3xl text-gray-800">Más que mangos, una experiencia</h3>
+    <ul class="list-none space-y-4">
+      <li class="flex items-start gap-3">
+        <span class="text-2xl">🌿</span>
+        <p><strong>Sostenibilidad:</strong> Trabajamos con prácticas agrícolas responsables.</p>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-2xl">🚛</span>
+        <p><strong>Envío Exprés:</strong> De la finca a tu casa en tiempo récord.</p>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-2xl">🥭</span>
+        <p><strong>Calidad Premium:</strong> Solo seleccionamos los mejores mangos.</p>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="text-2xl">❤️</span>
+        <p><strong>Compromiso Local:</strong> Apoyamos a productores nacionales.</p>
+      </li>
+    </ul>
+  </article>
+
+  <!-- Image Section -->
+  <article class="flex justify-center md:justify-end">
+    <Image
+      src="/src/assets/choose.jpg"
+      class="object-cover w-full max-w-md md:max-w-lg rounded-3xl shadow-lg"
+      alt="Por Qué Elegirnos"
+      width={4032}
+      height={2688}
+    />
+  </article>
+</section>
