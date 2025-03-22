@@ -78,7 +78,7 @@
   <!-- Mobile Menu -->
   <ul
     id="mobile-menu"
-    class="hidden absolute top-20 left-0 w-full bg-surface dark:bg-surface-dark shadow-lg py-6 flex-col gap-6 text-center text-text dark:text-text-dark font-secondary md:hidden transition-colors duration-300"
+    class="hidden absolute top-20 left-0 w-full h-screen bg-surface dark:bg-surface-dark shadow-lg py-6 flex-col gap-6 text-center text-text dark:text-text-dark font-secondary md:hidden transition-colors duration-300"
   >
     <li>
       <a
@@ -130,27 +130,45 @@
   const themeToggle = document.getElementById("theme-toggle");
   const html = document.documentElement;
 
-  // Mobile menu toggle
-  menuButton?.addEventListener("click", () => {
-    mobileMenu?.classList.toggle("hidden");
-    menuButton.textContent = mobileMenu?.classList.contains("hidden")
-      ? "☰"
-      : "✖";
-  });
+  if (menuButton && mobileMenu && themeToggle && html) {
+    // Mobile menu toggle
+    menuButton.addEventListener("click", () => {
+      if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        mobileMenu.classList.add("flex");
+        menuButton.textContent = "✖";
+      } else {
+        mobileMenu.classList.remove("flex");
+        mobileMenu.classList.add("hidden");
+        menuButton.textContent = "☰";
+      }
+    });
 
-  // Theme toggle (Light/Dark)
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme && themeToggle) {
-    html.className = savedTheme;
-    themeToggle.textContent = savedTheme === "dark" ? "🌙" : "🌞";
+    // Close mobile menu when clicking any link
+    const mobileLinks = mobileMenu.querySelectorAll("a");
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("flex");
+        mobileMenu.classList.add("hidden");
+        menuButton.textContent = "☰";
+      });
+    });
+
+    // Theme toggle (Light/Dark)
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      html.className = savedTheme;
+      themeToggle.textContent = savedTheme === "dark" ? "🌙" : "🌞";
+    }
+
+    themeToggle.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      html.classList.toggle("light");
+
+      const newTheme = html.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      themeToggle.textContent = newTheme === "dark" ? "🌙" : "🌞";
+    });
   }
-
-  themeToggle?.addEventListener("click", () => {
-    html.classList.toggle("dark");
-    html.classList.toggle("light");
-
-    const newTheme = html.classList.contains("dark") ? "dark" : "light";
-    localStorage.setItem("theme", newTheme);
-    themeToggle.textContent = newTheme === "dark" ? "🌙" : "🌞";
-  });
 </script>
