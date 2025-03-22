@@ -4,19 +4,33 @@ import { Image } from "astro:assets";
 
 <article
   id="products"
-  class="grid grid-cols-1 md:grid-cols-2 min-h-screen px-10 py-16 gap-10 items-center"
+  class="grid grid-cols-1 md:grid-cols-2 min-h-screen px-8 md:px-10 py-16 gap-10 items-center bg-[var(--color-background)] dark:bg-[var(--color-background-dark)] transition-colors duration-300"
 >
   <!-- Text Section -->
-  <section class="flex flex-col gap-6">
-    <h2 class="text-5xl font-bold text-emerald-600">Nuestros Productos</h2>
-    <h3 class="text-3xl text-gray-800">Una variedad para cada paladar</h3>
-    <p class="text-lg text-gray-600 leading-relaxed">
+  <section
+    class="flex flex-col gap-6 text-[var(--color-text)] dark:text-[var(--color-text-dark)]"
+  >
+    <h2
+      class="text-4xl md:text-5xl font-bold text-primary dark:text-primary font-primary leading-tight"
+    >
+      Nuestros Productos
+    </h2>
+    <h3
+      class="text-2xl md:text-3xl font-semibold text-[var(--color-text)] dark:text-[var(--color-text-dark)] font-secondary"
+    >
+      Una variedad para cada paladar
+    </h3>
+    <p
+      class="text-lg leading-relaxed font-secondary text-[var(--color-muted)] dark:text-[var(--color-muted-dark)]"
+    >
       Desde los dulces y jugosos <strong>Mangos Ataulfo</strong> hasta los clásicos
-      y vibrantes
-      <strong>Mangos Tommy Atkins</strong>, en Mangoland encontrarás la opción
-      perfecta para cada ocasión. Frescos, sabrosos y llenos de nutrientes.
+      y vibrantes <strong>Mangos Tommy Atkins</strong>, en Mangoland encontrarás
+      la opción perfecta para cada ocasión. Frescos, sabrosos y llenos de
+      nutrientes.
     </p>
-    <ul class="list-disc pl-6 text-gray-700 text-lg">
+    <ul
+      class="list-disc pl-6 text-lg text-[var(--color-muted)] dark:text-[var(--color-muted-dark)] font-secondary"
+    >
       <li>Mangos frescos de temporada</li>
       <li>Combos para familias y empresas</li>
       <li>Envíos a todo el país</li>
@@ -24,10 +38,10 @@ import { Image } from "astro:assets";
   </section>
 
   <!-- Image Section -->
-  <section class="flex justify-center md:justify-end">
+  <section class="flex justify-center md:justify-end animate-element">
     <Image
       src="/assets/ourproducts.jpg"
-      class="object-cover w-full max-w-md md:max-w-lg rounded-3xl shadow-lg"
+      class="w-full max-w-[80%] object-cover rounded-3xl shadow-lg"
       alt="Nuestros Productos"
       width={4032}
       height={2688}

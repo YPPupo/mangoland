@@ -1,76 +1,125 @@
----
-// No necesitas lógica JS directamente aquí en Astro
----
-
-<nav class="fixed top-0 right-0 left-0 flex justify-between items-center px-10 py-6 bg-white shadow-md">
+<nav
+  class="fixed top-0 right-0 left-0 flex justify-between items-center px-8 md:px-10 py-6 bg-surface dark:bg-surface-dark shadow-md z-50 transition-colors duration-300"
+>
   <!-- Logo -->
-  <a href="/" class="text-3xl font-bold text-emerald-600">🥭 Mangoland</a>
+  <a
+    href="/"
+    class="text-2xl md:text-3xl font-bold text-primary dark:text-primary font-primary"
+  >
+    🥭 Mangoland
+  </a>
 
   <!-- Desktop Menu -->
-  <ul class="hidden md:flex gap-8 text-gray-700">
-    <li><a href="#hero" class="hover:text-emerald-600 transition">Home</a></li>
+  <ul class="hidden md:flex gap-6 text-text dark:text-text-dark font-secondary">
     <li>
-      <a href="#about" class="hover:text-emerald-600 transition"
+      <a
+        href="#hero"
+        class="hover:text-primary dark:hover:text-primary transition">Home</a
+      >
+    </li>
+    <li>
+      <a
+        href="#about"
+        class="hover:text-primary dark:hover:text-primary transition"
         >Sobre Nosotros</a
       >
     </li>
     <li>
-      <a href="#products" class="hover:text-emerald-600 transition"
+      <a
+        href="#products"
+        class="hover:text-primary dark:hover:text-primary transition"
         >Nuestros Productos</a
       >
     </li>
     <li>
-      <a href="#why-choose-us" class="hover:text-emerald-600 transition"
+      <a
+        href="#why-choose-us"
+        class="hover:text-primary dark:hover:text-primary transition"
         >Por Qué Elegirnos</a
       >
     </li>
     <li>
-      <a href="#testimonials" class="hover:text-emerald-600 transition"
+      <a
+        href="#testimonials"
+        class="hover:text-primary dark:hover:text-primary transition"
         >Testimonios</a
       >
     </li>
     <li>
-      <a href="#contact" class="hover:text-emerald-600 transition">Contacto</a>
+      <a
+        href="#contact"
+        class="hover:text-primary dark:hover:text-primary transition"
+        >Contacto</a
+      >
     </li>
   </ul>
 
-  <!-- Mobile Menu Button -->
-  <button
-    id="menu-button"
-    class="md:hidden text-emerald-600"
-    aria-label="Abrir menú"
-  >
-    ☰
-  </button>
+  <!-- Icons -->
+  <div class="flex gap-4 items-center">
+    <!-- Dark Mode Toggle -->
+    <button
+      id="theme-toggle"
+      class="text-primary dark:text-primary text-xl"
+      aria-label="Toggle Dark Mode"
+    >
+      🌞
+    </button>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="menu-button"
+      class="md:hidden text-primary dark:text-primary text-2xl"
+      aria-label="Abrir menú"
+    >
+      ☰
+    </button>
+  </div>
 
   <!-- Mobile Menu -->
   <ul
     id="mobile-menu"
-    class="hidden absolute top-20 left-0 w-full bg-white shadow-lg py-5 flex h-screen flex-col gap-5 text-center text-gray-700 md:hidden"
+    class="hidden absolute top-20 left-0 w-full bg-surface dark:bg-surface-dark shadow-lg py-6 flex-col gap-6 text-center text-text dark:text-text-dark font-secondary md:hidden transition-colors duration-300"
   >
-    <li><a href="/" class="hover:text-emerald-600 transition">Home</a></li>
     <li>
-      <a href="/about" class="hover:text-emerald-600 transition"
+      <a
+        href="#hero"
+        class="hover:text-primary dark:hover:text-primary transition">Home</a
+      >
+    </li>
+    <li>
+      <a
+        href="#about"
+        class="hover:text-primary dark:hover:text-primary transition"
         >Sobre Nosotros</a
       >
     </li>
     <li>
-      <a href="/products" class="hover:text-emerald-600 transition"
+      <a
+        href="#products"
+        class="hover:text-primary dark:hover:text-primary transition"
         >Nuestros Productos</a
       >
     </li>
     <li>
-      <a href="/why-choose-us" class="hover:text-emerald-600 transition"
+      <a
+        href="#why-choose-us"
+        class="hover:text-primary dark:hover:text-primary transition"
         >Por Qué Elegirnos</a
       >
     </li>
     <li>
-      <a href="/testimonials" class="hover:text-emerald-600 transition"
+      <a
+        href="#testimonials"
+        class="hover:text-primary dark:hover:text-primary transition"
         >Testimonios</a
       >
     </li>
     <li>
-      <a href="/contact" class="hover:text-emerald-600 transition">Contacto</a>
+      <a
+        href="#contact"
+        class="hover:text-primary dark:hover:text-primary transition"
+        >Contacto</a
+      >
     </li>
   </ul>
 </nav>
@@ -78,9 +127,30 @@
 <script>
   const menuButton = document.getElementById("menu-button");
   const mobileMenu = document.getElementById("mobile-menu");
+  const themeToggle = document.getElementById("theme-toggle");
+  const html = document.documentElement;
 
+  // Mobile menu toggle
   menuButton?.addEventListener("click", () => {
-    const isOpen = mobileMenu?.classList.toggle("hidden");
-    menuButton.textContent = isOpen ? "☰" : "✖";
+    mobileMenu?.classList.toggle("hidden");
+    menuButton.textContent = mobileMenu?.classList.contains("hidden")
+      ? "☰"
+      : "✖";
+  });
+
+  // Theme toggle (Light/Dark)
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme && themeToggle) {
+    html.className = savedTheme;
+    themeToggle.textContent = savedTheme === "dark" ? "🌙" : "🌞";
+  }
+
+  themeToggle?.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    html.classList.toggle("light");
+
+    const newTheme = html.classList.contains("dark") ? "dark" : "light";
+    localStorage.setItem("theme", newTheme);
+    themeToggle.textContent = newTheme === "dark" ? "🌙" : "🌞";
   });
 </script>

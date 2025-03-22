@@ -1,13 +1,11 @@
----
-
----
-
-<footer class="bg-gray-900 text-white py-12 px-10">
+<footer
+  class="bg-surface dark:bg-surface-dark text-text dark:text-text-dark transition-colors duration-300 py-12 px-8 md:px-10"
+>
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
     <!-- About Section -->
     <div>
-      <h3 class="text-xl font-semibold mb-4">Sobre Mangoland</h3>
-      <p class="text-gray-400">
+      <h3 class="text-xl font-semibold mb-4 font-primary">Sobre Mangoland</h3>
+      <p class="text-muted dark:text-muted-dark font-secondary leading-relaxed">
         Llevamos la frescura tropical directamente a tu puerta. Sabor premium,
         calidad garantizada.
       </p>
@@ -15,44 +13,63 @@
 
     <!-- Links Section -->
     <div>
-      <h3 class="text-xl font-semibold mb-4">Enlaces Rápidos</h3>
-      <ul class="text-gray-400 space-y-2">
-        <li><a href="/" class="hover:text-emerald-400">Inicio</a></li>
+      <h3 class="text-xl font-semibold mb-4 font-primary">Enlaces Rápidos</h3>
+      <ul class="text-muted dark:text-muted-dark space-y-2 font-secondary">
         <li>
-          <a href="/about" class="hover:text-emerald-400">Sobre Nosotros</a>
+          <a href="/" class="hover:text-primary transition">Inicio</a>
         </li>
         <li>
-          <a href="/products" class="hover:text-emerald-400">Productos</a>
+          <a href="/about" class="hover:text-primary transition"
+            >Sobre Nosotros</a
+          >
         </li>
-        <li><a href="/contact" class="hover:text-emerald-400">Contacto</a></li>
+        <li>
+          <a href="/products" class="hover:text-primary transition">Productos</a
+          >
+        </li>
+        <li>
+          <a href="/contact" class="hover:text-primary transition">Contacto</a>
+        </li>
       </ul>
     </div>
 
     <!-- Contact Section -->
     <div>
-      <h3 class="text-xl font-semibold mb-4">Contacto</h3>
-      <p class="text-gray-400">
-        Correo: <a
+      <h3 class="text-xl font-semibold mb-4 font-primary">Contacto</h3>
+      <p class="text-muted dark:text-muted-dark font-secondary">
+        Correo:
+        <a
           href="mailto:info@mangoland.com"
-          class="hover:text-emerald-400">info@mangoland.com</a>
+          class="hover:text-primary transition">info@mangoland.com</a
+        >
       </p>
-      <p class="text-gray-400">Teléfono: +52 123 456 7890</p>
-      <p class="text-gray-400">Ubicación: Ciudad de México</p>
+      <p class="text-muted dark:text-muted-dark font-secondary">
+        Teléfono: +52 123 456 7890
+      </p>
+      <p class="text-muted dark:text-muted-dark font-secondary">
+        Ubicación: Ciudad de México
+      </p>
     </div>
 
     <!-- Social Section -->
     <div>
-      <h3 class="text-xl font-semibold mb-4">Seguinos</h3>
-      <div class="flex space-x-4">
-        <a href="#" class="hover:text-emerald-400" aria-label="Facebook">🌿</a>
-        <a href="#" class="hover:text-emerald-400" aria-label="Instagram">📸</a>
-        <a href="#" class="hover:text-emerald-400" aria-label="Twitter">🐦</a>
+      <h3 class="text-xl font-semibold mb-4 font-primary">Seguinos</h3>
+      <div class="flex space-x-4 text-muted dark:text-muted-dark">
+        <a href="#" class="hover:text-primary transition" aria-label="Facebook"
+          >🌿</a
+        >
+        <a href="#" class="hover:text-primary transition" aria-label="Instagram"
+          >📸</a
+        >
+        <a href="#" class="hover:text-primary transition" aria-label="Twitter"
+          >🐦</a
+        >
       </div>
     </div>
   </div>
 
   <!-- Copyright -->
-  <div class="text-center text-gray-600 mt-8">
+  <div class="text-center text-muted dark:text-muted-dark mt-8 font-secondary">
     <p>&copy; 2025 Mangoland. Todos los derechos reservados.</p>
   </div>
 </footer>

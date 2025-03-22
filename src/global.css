@@ -1,6 +1,53 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline{
+@theme inline {
+  --font-primary: "Poppins", sans-serif;
+  --font-secondary: "Montserrat", sans-serif;
 
+  --color-background: #fefce8;
+  --color-background-dark: #1f2937;
+
+  --color-surface: #ffffff;
+  --color-surface-dark: #374151;
+
+  --color-primary: #facc15;
+  --color-secondary: #fb923c;
+  --color-accent: #4ade80;
+
+  --color-text: #1f2937;
+  --color-text-dark: #f9fafb;
+
+  --color-muted: #6b7280;
+  --color-muted-dark: #9ca3af;
+
+  --animate-appear: appear linear;
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.animate-element {
+  animation: appear linear;
+  animation-timeline: view();
 }

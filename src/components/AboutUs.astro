@@ -4,13 +4,13 @@ import { Image } from "astro:assets";
 
 <article
   id="about"
-  class="grid grid-cols-1 md:grid-cols-2 min-h-screen px-10 py-16 gap-10 items-center"
+  class="grid grid-cols-1 md:grid-cols-2 min-h-screen px-8 md:px-10 py-16 gap-10 items-center bg-background dark:bg-background-dark transition-colors duration-300"
 >
   <!-- Image Section -->
-  <section class="flex justify-center md:justify-start">
+  <section class="flex justify-center md:justify-start animate-element">
     <Image
       src="/assets/about.jpg"
-      class="object-cover w-full max-w-md md:max-w-lg rounded-3xl shadow-lg"
+      class="w-full max-w-[80%] object-cover rounded-3xl shadow-lg"
       alt="Sobre Nosotros"
       width={4032}
       height={2688}
@@ -18,16 +18,22 @@ import { Image } from "astro:assets";
   </section>
 
   <!-- Text Section -->
-  <section class="flex flex-col gap-6">
-    <h2 class="text-5xl font-bold text-emerald-600">
+  <section class="flex flex-col gap-6 text-text dark:text-text-dark">
+    <h2
+      class="text-4xl md:text-5xl font-bold text-primary dark:text-primary font-primary leading-tight"
+    >
       La tierra del mango perfecto
     </h2>
-    <p class="text-lg text-gray-600 leading-relaxed">
+    <p
+      class="text-lg leading-relaxed font-secondary text-muted dark:text-muted-dark"
+    >
       En Mangoland, somos apasionados por los mangos. Trabajamos con productores
       locales para garantizar fruta de la mejor calidad, cosechada en su punto
       justo de madurez. Nuestra misión es llenar tu vida de sabor tropical, un
       mango a la vez.
     </p>
-    <p class="text-gray-500 italic">"Del árbol a tu mesa, con amor y sabor."</p>
+    <p class="italic text-muted dark:text-muted-dark">
+      "Del árbol a tu mesa, con amor y sabor."
+    </p>
   </section>
 </article>
