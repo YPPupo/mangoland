@@ -1,48 +1,71 @@
-# Astro Starter Kit: Basics
+# Mangoland
 
-```sh
-npm create astro@latest -- --template basics
-```
+Mangoland es una plataforma web desarrollada con [Astro](https://astro.build) que te permite explorar, leer y disfrutar de mangas. Este proyecto se basa en el Astro Starter Kit: Basics y está optimizado para un despliegue rápido y escalable en Vercel.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Características
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Interfaz moderna y responsiva:** Disfruta de una experiencia de usuario limpia y adaptable a diferentes dispositivos.
+- **Rendimiento optimizado:** Gracias a Astro, el sitio es rápido y eficiente.
+- **Fácil despliegue:** Configurado para un despliegue sin complicaciones en Vercel.
+- **Escalabilidad:** Base sólida para agregar más funcionalidades y contenido en el futuro.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Tecnologías Utilizadas
 
-## 🚀 Project Structure
+- **[Astro](https://astro.build):** Framework moderno para sitios estáticos.
+- **HTML, CSS y JavaScript:** Para la construcción y estilización de la interfaz.
+- **Vercel:** Plataforma de despliegue y hosting.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Instalación
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Sigue estos pasos para ejecutar Mangoland de forma local:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+1. **Clona el repositorio:**
 
-## 🧞 Commands
+   ```bash
+   git clone https://github.com/YPPupo/mangoland.git
+   ```
 
-All commands are run from the root of the project, from a terminal:
+2. **Entra en el directorio del proyecto:**
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+   ```bash
+   cd mangoland
+   ```
 
-## 👀 Want to learn more?
+3. **Instala las dependencias:**
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+   ```bash
+   npm install
+   ```
+
+4. **Inicia el servidor de desarrollo:**
+
+   ```bash
+   npm run dev
+   ```
+
+   El proyecto estará disponible en [http://localhost:4321](http://localhost:4321).
+
+## Comandos Disponibles
+
+- **`npm run dev`** – Inicia el servidor de desarrollo.
+- **`npm run build`** – Compila el proyecto para producción y genera la carpeta `./dist/`.
+- **`npm run preview`** – Previsualiza la versión de producción localmente.
+- **`npm run astro -- --help`** – Muestra la ayuda del CLI de Astro.
+
+
+## Despliegue
+
+El proyecto está desplegado en Vercel y puedes verlo en producción en: [mangoland.vercel.app](https://mangoland.vercel.app).
+
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
+
+## Contacto
+
+Si tienes dudas, sugerencias o deseas colaborar, puedes contactar a [Yasel Pérez](https://github.com/YPPupo).
+
+---
+
+¡Disfruta de Mangoland y feliz lectura!
