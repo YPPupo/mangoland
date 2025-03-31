@@ -37,11 +37,13 @@ import { Image } from "astro:assets";
   <!-- Image Section -->
   <div class="flex justify-center md:justify-end">
     <Image
-      src="/assets/background.jpg"
+      src="/assets/background.webp"
       alt="Mangos frescos"
       width={500}
       height={500}
-      class="rounded-3xl shadow-lg"
+      class="fade-bottom"
+      priority
+      loading="eager"
     />
   </div>
 </div>
