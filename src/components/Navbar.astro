@@ -174,27 +174,23 @@ const items = [
 
     // Observador de la Intersección para resaltar la sección activa
     if (sections.length > 0 && navLinks.length > 0 && navbar) {
-      console.log("Secciones y enlaces encontrados:", sections); // Para depuración
       const observer = new IntersectionObserver(
         (entries) => {
-          console.log("Entradas del observador:", entries); // Para depuración
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const id = entry.target.getAttribute("id");
-              console.log("Sección intersectando:", id); // Para depuración
-              // Resaltar el enlace correspondiente en el navbar
               navLinks.forEach((link) => {
-                link.classList.remove("active"); // Elimina la clase activa de todos los enlaces
+                link.classList.remove("active");
                 if (link.getAttribute("href") === `#${id}`) {
-                  link.classList.add("active"); // Agrega la clase activa al enlace correspondiente
+                  link.classList.add("active");
                 }
               });
             }
           });
         },
         {
-          rootMargin: `-${navbar.offsetHeight}px 0px 0px 0px`, // Evita que se active demasiado pronto
-          threshold: 0.5, // Considera la sección como activa cuando al menos el 50% está visible
+          rootMargin: `-${navbar.offsetHeight}px 0px 0px 0px`,
+          threshold: 0.5,
         }
       );
 
