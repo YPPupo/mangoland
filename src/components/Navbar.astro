@@ -9,18 +9,15 @@ const items = [
 ];
 ---
 
-<nav
-  id="navbar-bg"
-  class="fixed top-0 right-0 left-0 z-50 transition-colors duration-300"
->
-  <!-- Fondo del navbar -->
+<nav class="fixed top-0 right-0 left-0 z-50 transition-colors duration-300" id="main-navigation">
   <div
+    id="navbar-bg"
     class="absolute inset-0 bg-background dark:bg-background-dark transition-all duration-300 z-10"
   >
   </div>
 
   <div
-    class="flex items-center justify-between px-8 md:px-10 py-6 max-w-screen-xl mx-auto z-20 relative"
+    class="flex items-center justify-between px-8 md:px-7 py-6 mx-auto z-20 relative"
   >
     <a
       href="/"
@@ -29,16 +26,17 @@ const items = [
       🥭 Mangoland
     </a>
 
-    <!-- Menú de escritorio -->
     <ul
       class="hidden md:flex gap-6 text-text dark:text-text-dark font-secondary"
+      id="desktop-menu"
     >
       {
         items.map((item) => (
           <li>
             <a
               href={item.href}
-              class="hover:text-primary dark:hover:text-primary transition"
+              class="hover:text-primary dark:hover:text-primary transition active:text-primary"
+              data-nav-link
             >
               {item.name}
             </a>
@@ -47,9 +45,7 @@ const items = [
       }
     </ul>
 
-    <!-- Íconos -->
     <div class="flex gap-4 items-center">
-      <!-- Toggle de modo oscuro -->
       <button
         id="theme-toggle"
         class="text-primary dark:text-primary text-xl"
@@ -58,7 +54,6 @@ const items = [
         🌞
       </button>
 
-      <!-- Botón para menú mobile -->
       <button
         id="menu-button"
         class="md:hidden text-primary dark:text-primary text-2xl"
@@ -69,7 +64,6 @@ const items = [
     </div>
   </div>
 
-  <!-- Menú Mobile: movido fuera del contenedor relativo -->
   <ul
     id="mobile-menu"
     class="hidden absolute top-full left-0 w-full h-screen bg-surface dark:bg-surface-dark shadow-lg py-6 flex flex-col gap-6 text-center text-text dark:text-text-dark font-secondary transition-colors duration-300 md:hidden z-[60]"
@@ -80,6 +74,7 @@ const items = [
           <a
             href={item.href}
             class="hover:text-primary dark:hover:text-primary transition"
+            data-nav-link
           >
             {item.name}
           </a>
@@ -91,37 +86,64 @@ const items = [
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.getElementById("main-navigation");
     const navbarBg = document.getElementById("navbar-bg");
     const menuButton = document.getElementById("menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
     const themeToggle = document.getElementById("theme-toggle");
     const html = document.documentElement;
+    const navLinks = document.querySelectorAll("[data-nav-link]");
+    const sections = document.querySelectorAll("article[id]"); // Asegúrate de que tus secciones tengan un ID
 
-    if (menuButton && mobileMenu && themeToggle && html) {
-      // Toggle del menú mobile
+    // Función para hacer scroll suave
+    const scrollToSection = (href) => {
+      const targetElement = document.querySelector(href);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - navbar.offsetHeight, // Ajusta si tienes un margen superior
+          behavior: "smooth",
+        });
+      }
+    };
+
+    // Toggle del menú mobile
+    if (menuButton && mobileMenu) {
       menuButton.addEventListener("click", () => {
-        if (mobileMenu.classList.contains("hidden")) {
-          mobileMenu.classList.remove("hidden");
-          mobileMenu.classList.add("flex");
-          menuButton.textContent = "✖";
-        } else {
-          mobileMenu.classList.remove("flex");
-          mobileMenu.classList.add("hidden");
-          menuButton.textContent = "☰";
-        }
+        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("flex");
+        menuButton.textContent = mobileMenu.classList.contains("flex") ? "✖" : "☰";
       });
 
-      // Cerrar menú mobile al hacer click en cualquier link
-      const mobileLinks = mobileMenu.querySelectorAll("a");
-      mobileLinks.forEach((link) => {
+      // Cerrar menú mobile al hacer click en un link
+      mobileMenu.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
           mobileMenu.classList.remove("flex");
           mobileMenu.classList.add("hidden");
           menuButton.textContent = "☰";
         });
       });
+    }
 
-      // Toggle de tema (Claro/Oscuro)
+    // Scroll suave al hacer clic en los enlaces del menú de escritorio
+    document.querySelectorAll("#desktop-menu a").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        scrollToSection(href);
+      });
+    });
+
+    // Scroll suave al hacer clic en los enlaces del menú móvil
+    document.querySelectorAll("#mobile-menu a").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const href = link.getAttribute("href");
+        scrollToSection(href);
+      });
+    });
+
+    // Toggle de tema (Claro/Oscuro)
+    if (themeToggle && html) {
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme) {
         html.className = savedTheme;
@@ -131,19 +153,53 @@ const items = [
       themeToggle.addEventListener("click", () => {
         html.classList.toggle("dark");
         html.classList.toggle("light");
-
         const newTheme = html.classList.contains("dark") ? "dark" : "light";
         localStorage.setItem("theme", newTheme);
         themeToggle.textContent = newTheme === "dark" ? "🌙" : "🌞";
       });
+    }
 
-      // Agregar sombra al navbar al hacer scroll
+    // Agregar sombra al navbar al hacer scroll
+    if (navbarBg) {
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
-          navbarBg.classList.add("shadow-lg");
+          navbarBg.classList.remove("bg-background", "dark:bg-background-dark");
+          navbarBg.classList.add("bg-surface", "dark:bg-surface-dark", "shadow-lg");
         } else {
-          navbarBg.classList.remove("shadow-lg");
+          navbarBg.classList.remove("bg-surface", "dark:bg-surface-dark", "shadow-lg");
+          navbarBg.classList.add("bg-background", "dark:bg-background-dark");
         }
+      });
+    }
+
+    // Observador de la Intersección para resaltar la sección activa
+    if (sections.length > 0 && navLinks.length > 0 && navbar) {
+      console.log("Secciones y enlaces encontrados:", sections); // Para depuración
+      const observer = new IntersectionObserver(
+        (entries) => {
+          console.log("Entradas del observador:", entries); // Para depuración
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+              console.log("Sección intersectando:", id); // Para depuración
+              // Resaltar el enlace correspondiente en el navbar
+              navLinks.forEach((link) => {
+                link.classList.remove("active"); // Elimina la clase activa de todos los enlaces
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active"); // Agrega la clase activa al enlace correspondiente
+                }
+              });
+            }
+          });
+        },
+        {
+          rootMargin: `-${navbar.offsetHeight}px 0px 0px 0px`, // Evita que se active demasiado pronto
+          threshold: 0.5, // Considera la sección como activa cuando al menos el 50% está visible
+        }
+      );
+
+      sections.forEach((section) => {
+        observer.observe(section);
       });
     }
   });

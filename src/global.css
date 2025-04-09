@@ -22,6 +22,25 @@
   --color-muted: #6b7280;
   --color-muted-dark: #9ca3af;
 
+  /* New Theme */
+  /* --color-primary: #ff9e1b; Mango Orange
+  --color-secondary: #ffc107; Mango Yellow
+  --color-natural: #388e3c; Verde de hojas en Light Mode
+  --color-background: #fff9f3; Fondo principal claro
+  --color-text: #333333; Texto principal claro
+  --color-subtext: #666666; Texto secundario claro
+  --color-division: #e0e0e0; Líneas y divisiones
+  --color-white: #ffffff; Blanco
+
+  --color-primary: #ff9e1b; Mango Orange (se mantiene)
+  --color-secondary: #ffc107; Mango Yellow (se mantiene)
+  --color-natural-dark: #4caf50; Verde de hojas en Dark Mode
+  --color-background-dark: #1c1c1c; Fondo principal oscuro
+  --color-card-dark: #2a2a2a; Fondo de tarjetas o secciones
+  --color-text-dark: #f5f5f5; Texto principal oscuro
+  --color-subtext-dark: #b3b3b3; Texto secundario oscuro
+  --color-division-dark: #333333; Líneas y divisiones */
+
   --animate-appear: appear linear;
 
   @keyframes appear {
@@ -40,6 +59,16 @@
   }
 }
 
+.animate-element {
+  animation: appear linear;
+  animation-timeline: view();
+}
+
+.fade-bottom {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
 html,
 body {
   margin: 0;
@@ -47,12 +76,6 @@ body {
   height: 100%;
 }
 
-.animate-element {
-  animation: appear linear;
-  animation-timeline: view();
-}
-
-.fade-bottom{
-  mask-image: linear-gradient(to bottom, black 80% ,transparent 100%  );
-  -webkit-mask-image: linear-gradient(to bottom, black 80% ,transparent 100% );
+.active{
+  color: var(--color-primary) !important;
 }

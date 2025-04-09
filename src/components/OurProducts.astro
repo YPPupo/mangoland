@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import MangoImage from "../assets/ourproducts.webp";
 ---
 
 <article
@@ -40,7 +41,7 @@ import { Image } from "astro:assets";
   <!-- Image Section -->
   <section class="flex justify-center md:justify-end animate-element">
     <Image
-      src="/assets/ourproducts.webp"
+      src={MangoImage}
       class="w-full md:max-w-[80%] object-cover rounded-3xl shadow-lg"
       alt="Nuestros Productos"
       width={4032}

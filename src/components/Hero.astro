@@ -1,13 +1,14 @@
 ---
 import { Image } from "astro:assets";
+import MangoImage  from "../assets/background.webp";
 ---
 
-<div
+<article
   id="hero"
   class="min-h-screen w-full bg-background dark:bg-background-dark grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-10 px-8 md:px-10 md:py-16 py-32 transition-colors duration-300"
 >
   <!-- Text Content -->
-  <div class="text-text dark:text-text-dark">
+  <section class="text-text dark:text-text-dark">
     <h1
       class="text-4xl md:text-5xl font-bold leading-tight mb-6 font-primary text-primary dark:text-primary"
     >
@@ -32,12 +33,12 @@ import { Image } from "astro:assets";
         Descubrí nuestros mangos
       </button>
     </div>
-  </div>
+  </section>
 
   <!-- Image Section -->
-  <div class="flex justify-center md:justify-end">
+  <section class="flex justify-center md:justify-end">
     <Image
-      src="/assets/background.webp"
+      src={MangoImage}
       alt="Mangos frescos"
       width={500}
       height={500}
@@ -45,5 +46,5 @@ import { Image } from "astro:assets";
       priority
       loading="eager"
     />
-  </div>
-</div>
+  </section>
+</article>
